@@ -7,7 +7,6 @@ import scoreRouter from "./router/score.js";
 import userRouter from "./router/user.js";
 import { config } from "./config.js";
 import { db } from "./db/database.js";
-import { Connection } from "puppeteer";
 
 const app = express();
 
