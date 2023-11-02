@@ -34,6 +34,15 @@ export async function create(userID, score, time) {
     .then((result) => getById(result[0].insertId)); //
 }
 
+export async function getScoresByDateRange(id, startDate, endDate) {
+  return db
+    .execute(
+      `${SELECT_JOIN} WHERE scores.userID=? AND scores.date >= ? AND scores.date <= ? ${ORDER_DESC}`,
+      [id, startDate, endDate]
+    )
+    .then((result) => result[0]);
+}
+
 export async function update(score, time, userID) {
   return db
     .execute(

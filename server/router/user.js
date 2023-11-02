@@ -14,7 +14,7 @@ const validateCredential = [
     .isLength({ min: 8 })
     .withMessage("password should be at least 8 characters")
     .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!#%*?&]+$/
     )
     .withMessage(
       "Please use uppercase and lowercase letters and special characters."
@@ -32,6 +32,10 @@ const validateSignup = [
 router.post("/signup", validateSignup, userController.signup);
 
 router.post("/login", validateCredential, userController.login);
+
+router.post("/basicScore", userController.basicScore);
+
+router.get("/basicScore/:id", userController.getScores);
 
 router.get("/me", isAuth, userController.me);
 
